@@ -130,10 +130,7 @@ export const Sailbar = (props) => {
           <Row   className='flex px-1  w-full max-w-100' >
       <Col  span={9}><div  >{ chap === "1" && <Charp /> } </div></Col>
 
-      <Col  span={9}offset={5} ><div >{ chapcl === "1" && <Charpclien/>}</div></Col>
-      <Col span={8} >
-      
-      </Col>
+     
     </Row>
 
  
