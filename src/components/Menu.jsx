@@ -5,7 +5,8 @@ import { Listar } from "./Listar"
 import { Estadistica } from "./Estadistica"
 import { Charp } from './charp'
 import { Charpclien } from './charp-clien'
-import Logo from '../assets/img/geeksmart.jpg';
+import Logo from '../assets/img/geeksmart.jpg'
+import { Timeli } from './time-line'
 import {SettingFilled,ShopFilled, DashboardFilled, SmileFilled,UserOutlined,PoweroffOutlined, ToolFilled, FilePdfFilled} from '@ant-design/icons'
 import { Breadcrumb, Layout, Menu, theme ,  Col, Row } from 'antd';
 const { Header, Content, Footer, Sider } = Layout;
@@ -51,9 +52,9 @@ export const Sailbar = (props) => {
     setEst("1");
   }
   function op_Dashboard(){
-    setReg("1");
+    setReg("0");
     setLis("1");
-    setEst("1");
+    setEst("0");
     setChap("1");
     setChapcli("1");
   }
@@ -133,7 +134,14 @@ export const Sailbar = (props) => {
      
     </Row>
 
- 
+    <center> <Row   className='flex px-1  w-full max-w-100' >
+     <Col  span={9}> <Timeli></Timeli>
+
+</Col>
+<Col></Col>
+     
+    </Row>
+    </center>
 
        
                             { lis === "1" && <Listar/>}
@@ -142,7 +150,7 @@ export const Sailbar = (props) => {
           </div>
         </Content>
         <Footer style={{textAlign: 'center',}}>
-          Ant Design ©{new Date().getFullYear()} Created by Ant UED
+          Geek smart ©{new Date().getFullYear()} 
         </Footer>
       </Layout>
     </Layout>

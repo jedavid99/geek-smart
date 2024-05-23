@@ -3,16 +3,16 @@ import React, { useState } from 'react';
 import { Divider, Radio, Table } from 'antd';
 const columns = [
   {
-    title: 'Name',
+    title: 'Nombre',
     dataIndex: 'name',
     render: (text) => <a>{text}</a>,
   },
   {
-    title: 'Age',
+    title: 'Servicio',
     dataIndex: 'age',
   },
   {
-    title: 'Address',
+    title: 'Modelo',
     dataIndex: 'address',
   },
 ];
@@ -58,17 +58,8 @@ export const Listar = () => {
   const [selectionType, setSelectionType] = useState('checkbox');
   return (
     <div>
-      <Radio.Group
-        onChange={({ target: { value } }) => {
-          setSelectionType(value);
-        }}
-        value={selectionType}
-      >
-        <Radio value="checkbox">Checkbox</Radio>
-        <Radio value="radio">radio</Radio>
-      </Radio.Group>
+      
 
-      <Divider />
 
       <Table
         rowSelection={{
