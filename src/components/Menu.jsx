@@ -7,6 +7,8 @@ import { Charp } from './charp'
 import { Charpclien } from './charp-clien'
 import Logo from '../assets/img/geeksmart.jpg'
 import { Timeli } from './time-line'
+import { Provelist } from './provedores/provedore-list'
+import { Flobott } from './provedores/provedor-agre'
 import {SettingFilled,ShopFilled, DashboardFilled, SmileFilled,UserOutlined,PoweroffOutlined, ToolFilled, FilePdfFilled} from '@ant-design/icons'
 import { Breadcrumb, Layout, Menu, theme ,  Col, Row } from 'antd';
 const { Header, Content, Footer, Sider } = Layout;
@@ -21,7 +23,11 @@ function getItem(label, key, icon, children,) {
 
 
 export const Sailbar = (props) => {
+  const [flobtp, setFlobp] = useState(""); 
 
+  const [prov, setProv] = useState(""); 
+
+const [Timl, setTeml] = useState(""); 
   const [reg, setReg] = useState("");
   const [lis, setLis] = useState("");
   const [est, setEst] = useState("");
@@ -57,6 +63,24 @@ export const Sailbar = (props) => {
     setEst("0");
     setChap("1");
     setChapcli("1");
+    setTeml("1");
+    setFlobp("0");
+    setProv("0");
+
+
+  }
+
+  function op_provedores(){
+    setProv("1");
+    setReg("0");
+    setLis("0");
+    setEst("0");
+    setChap("0");
+    setChapcli("0");
+    setTeml("0")
+    setFlobp("1")
+
+
   }
 
   const items = [
@@ -75,6 +99,12 @@ export const Sailbar = (props) => {
 
   const items3 = [
     getItem('Dashboard', '1', <DashboardFilled />),
+
+
+  ];
+
+  const itemspr = [
+    getItem('Provedores', '9',<ShopFilled />),
 
 
   ];
@@ -97,7 +127,10 @@ export const Sailbar = (props) => {
                         </div>
                     </a>
                       </div>
-                      <Menu  mode="inline" defaultSelectedKeys={['1']} className='bg-indigo-600' items={items3} onClick={op_Dashboard}></Menu>       
+                      <Menu  mode="inline" defaultSelectedKeys={['1']} className='bg-indigo-600' items={items3} onClick={op_Dashboard}></Menu>    
+                      
+                      <Menu  mode="inline"  className='bg-indigo-600' items={itemspr} onClick={op_provedores}></Menu>  
+                         
         <Menu className='bg-indigo-600'   mode="inline" items={items} />
         
                                
@@ -135,7 +168,9 @@ export const Sailbar = (props) => {
     </Row>
 
     <center> <Row   className='flex px-1  w-full max-w-100' >
-     <Col  span={9}> <Timeli></Timeli>
+     <Col  span={9}> 
+     { Timl === "1" && <Timeli/>}
+
 
 </Col>
 <Col></Col>
@@ -143,7 +178,8 @@ export const Sailbar = (props) => {
     </Row>
     </center>
 
-       
+    { flobtp === "1" && <Flobott/>}
+    { prov === "1" && <Provelist/>}
                             { lis === "1" && <Listar/>}
                             { est === "1" && <Estadistica/> }
                             { reg === "1" && <Registrar/> }
