@@ -4,7 +4,7 @@ import { Button, Col, DatePicker, Drawer, Form, Input, Row, Select, Space } from
 const { Option } = Select;
 
 
-const Forprov = () => {
+export const Forprov = () => {
   const [open, setOpen] = useState(false);
   const showDrawer = () => { setOpen(true); };
   const onClose = () => { setOpen(false);};
@@ -165,6 +165,5 @@ const Forprov = () => {
         </Form>
       </Drawer>
     </>
-  );
-};
-export default App;
+  )
+}
