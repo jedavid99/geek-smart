@@ -1,8 +1,8 @@
-
 import React, { useState } from 'react';
-import { Divider, Radio, Table } from 'antd';
-import { Flobott } from './provedor-agre';
+import { LayoutPrincipal } from '../layouts/LayoutPrincipal'
 
+import { Divider, Radio, Table } from 'antd';
+import { Flobott } from '../components/provedores/provedor-agre';
 const columns = [
   {
     title: 'Provedores',
@@ -75,13 +75,18 @@ const rowSelection = {
 
 
 
-export const Provelist = () => {
+
+
+
+export const Proveedores = () => {
   const [selectionType, setSelectionType] = useState('checkbox');
   return (
-    <div>
-      
 
-      <Table
+    <LayoutPrincipal>
+      <br />
+
+      <br />
+     <Table
         rowSelection={{
           type: selectionType,
           ...rowSelection,
@@ -89,29 +94,7 @@ export const Provelist = () => {
         columns={columns}
         dataSource={data}
       />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    </div>
+<Flobott/>
+    </LayoutPrincipal>
   )
 }

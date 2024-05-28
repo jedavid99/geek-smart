@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
-import { Sailbar } from './Menu'
+
 import Logo from '../assets/img/geeksmart.jpg';
 import { Button, message, Space } from 'antd';
+import { Home } from '../paginas/Home';
 
 export const Login = () => {
 
@@ -113,7 +114,7 @@ export const Login = () => {
   </div>
   
 </section>
-{ miLogin === "true" && <Sailbar usu={usu}/> } 
+{ miLogin === "true" && <Home usu={usu}/> } 
 </>
   )
 }

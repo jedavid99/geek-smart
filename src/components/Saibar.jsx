@@ -103,6 +103,90 @@
 
 
 
+return (
+    
+    
+  <>
+    <Layout id="menu"  className='bg-indigo-600'  style={{ minHeight: '100vh',}}>
+    
+    <Sider className='bg-indigo-600'   style={{ height:"500px",background:"#4f46e5", }} collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>
+    <div className="flex flex-shrink-0 p-4 px-4 bg-indigo-600">
+                  <a href="#" className="flex-shrink-0 block w-full group">
+                      <div className="flex items-center">
+                          <div>
+                               <img className="h-10 w-10 rounded-full mx-auto h-23 w-auto space-y-6" src={Logo}></img>
+                          </div>
+                          <div className="ml-1">
+                              <p className="text-sm font-medium text-white">GEEK SMART</p>
+                          </div>
+                      </div>
+                  </a>
+                    </div>
+                    <Menu  mode="inline" defaultSelectedKeys={['1']} className='bg-indigo-600' items={items3} onClick={op_Dashboard}></Menu>       
+      <Menu className='bg-indigo-600'   mode="inline" items={items} />
+      
+                             
+                              
+                            
+                            <nav className="flex-1 space-y-4 bg-indigo-700">
+                      <ul >
+                            <li>
+                              <a className="inline-flex items-center w-full px-4 py-2 mt-0 text-black transition duration-500 ease-in-out transform border-indigo-600 rounded-lg hover:border-indigo-600 focus:shadow-outline hover:bg-indigo-500" white=""  href=" "  onClick={ cerrarSesion } >
+                              
+                              <span className="ml-2"><PoweroffOutlined /></span>
+                              </a>
+                          </li>
+                          
+                          </ul>
+                            </nav>
+    </Sider>
+  
+    <Layout>
+      <Header style={{ padding: 0,  }} />
+      <Content style={{  margin: '0 16px', }}>
+        <Breadcrumb style={{ margin: '16px 0', }} >
+          <Breadcrumb.Item >User</Breadcrumb.Item>
+          <Breadcrumb.Item>Bill</Breadcrumb.Item>
+        </Breadcrumb>
+        <div style={{padding: 24,minHeight: 360, }}>
+
+        
+      
+                          
+        <Row   className='flex px-1  w-full max-w-100' >
+    <Col  span={9}><div  >{ chap === "1" && <Charp /> } </div></Col>
+
+    
+    <Col span={8} >
+    
+    </Col>
+  </Row>
+
+
+
+     
+                          { lis === "1" && <Listar/>}
+                          { est === "1" && <Estadistica/> }
+                          { reg === "1" && <Registrar/> }
+        </div>
+      </Content>
+      <Footer style={{textAlign: 'center',}}>
+        Ant Design ©{new Date().getFullYear()} Created by Ant UED
+      </Footer>
+    </Layout>
+  </Layout>
+</>
+ );
+};
+
+export default Sailbar;
+
+
+
+
+
+
+
 
 import React, { useState, useEffect } from 'react'
 
@@ -400,3 +484,381 @@ export default App;
 
 
 
+
+import React, { useState } from 'react';
+import { Divider, Radio, Table ,Tag,Column} from 'antd';
+import {CheckCircleOutlined ,CloseCircleOutlined, ClockCircleOutlined ,SyncOutlined  } from '@ant-design/icons';
+const columns = [
+  {
+    title: 'Nombre del cliente',
+    dataIndex: 'nombre',
+    render: (text) => <a>{text}</a>,
+  },
+  {
+    title: 'Tipo de Servicio',
+    dataIndex: 'Tiposervicio',
+  },
+  {
+    title: 'Modelo del telefono',
+    dataIndex: 'modelo',
+  },
+  {
+    title: 'Numero del cliente',
+    dataIndex: 'numerocliente',
+  },
+  {
+    title: 'Garantia',
+    dataIndex: 'estadogarantia',
+  },
+  {
+    title: 'Descriccion',
+    dataIndex: 'descriccion',
+  },
+  {
+    title: 'estatud',
+    dataIndex: 'estadotele',
+  },
+  {
+    title: 'precio',
+    dataIndex: 'precioservite',
+  },
+];
+const data = [
+  {
+    key: '1',
+    Nombre: 'John Brown',
+    Tiposervicio: 32,
+    modelo: 'New York No. 1 Lake Park',
+    numerocliente:'',
+    estadogarantia:<Tag icon={<ClockCircleOutlined />} color="warning">Por termina</Tag> ,
+    descrionccion:'',
+    estadotele:<Tag icon={<ClockCircleOutlined />} color="warning">Presupuestar</Tag>,
+    precioservite:'',
+  },
+  {
+    key: '2',
+    Nombre: 'Jim Green',
+    Tiposervicio: 42,
+    modelo: 'London No. 1 Lake Park',
+    numerocliente:'',
+    estadogarantia:<Tag icon={<CheckCircleOutlined />} color="success">Activa</Tag> ,
+    descrionccion:'',
+    estadotele:<Tag icon={<CheckCircleOutlined />} color="success">Entregado</Tag> ,
+    precioservite:'',
+  },
+  {
+    key: '3',
+    Nombre: 'Joe Black',
+    Tiposervicio: 32,
+    modelo: 'Sydney No. 1 Lake Park',
+    numerocliente:'',
+    estadogarantia: <Tag icon={<CheckCircleOutlined />} color="success">Activa</Tag>  ,
+    descrionccion:'',
+    estadotele:<Tag icon={<CheckCircleOutlined />} color="success">Entregado</Tag> ,
+    precioservite:'',
+  },
+  {
+    key: '4',
+    Nombre: 'Disabled User',
+    Tiposervicio: 99,
+    modelo: 'Sydney No. 1 Lake Park',
+    numerocliente:'',
+    estadogarantia:    <Tag icon={<CloseCircleOutlined  />} color="error">Termino</Tag>,
+    descrionccion:'',
+    estadotele:<Tag icon={<SyncOutlined   />} color="processing">Reparado</Tag>,
+    precioservite:'',
+  },
+];
+
+// rowSelection object indicates the need for row selection
+const rowSelection = {
+  onChange: (selectedRowKeys, selectedRows) => {
+    console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
+  },
+  getCheckboxProps: (record) => ({
+    disabled: record.name === 'Disabled User',
+    // Column configuration not to be checked
+    name: record.name,
+  }),
+};
+export const TablaTelefonos = () => {
+  return (
+    <div>
+      
+
+
+      <Table
+        
+        columns={columns}
+        dataSource={data}
+      />
+
+<Column
+      title="Tags"
+      dataIndex="tags"
+      key="tags"
+      render={(tags) => (
+        <>
+          {tags.map((tag) => {
+            let color = tag.length > 5 ? 'geekblue' : 'green';
+            if (tag === 'loser') {
+              color = 'volcano';
+            }
+            return (
+              <Tag color={color} key={tag}>
+                {tag.toUpperCase()}
+              </Tag>
+            );
+          })}
+        </>
+      )}
+    />
+
+    </div>
+  )
+}
+
+
+
+import React, { Children, useState } from 'react';
+import '../../App.css';
+import { Space, Table, Tag, Form, Input, Select, Button, Dropdown, Tooltip } from 'antd';
+import { CheckCircleOutlined, CloseCircleOutlined, ClockCircleOutlined, SyncOutlined, DownOutlined } from '@ant-design/icons';
+import { ModalEstaudtel } from './ModalEstatud';
+const columns = [
+
+
+  {
+    title: 'Orden de servicio',
+    dataIndex: 'ordenservicio',
+  },
+  {
+    title: 'Nombre del cliente',
+    dataIndex: 'nombre',
+    render: (text) => <a>{text}</a>,
+  },
+
+  {
+    title: 'DNI',
+    dataIndex: 'dni',
+  },
+  {
+    title: 'Modelo del telefono',
+    dataIndex: 'modelo',
+  },
+  
+
+  
+
+
+  {
+    title: 'estatud',
+    dataIndex: 'estadotele',
+    key: 'tags',
+    dataIndex: 'tags',
+    render: (_, { tags }) => (
+      <>
+        {tags.map((tag) => {
+          let color = tag.length > 10 ? 'geekblue' : 'green';
+          if (tag === 'irreparable') {
+            color = 'volcano';
+          }
+          return (
+            <Tag color={color} key={tag}>
+              {tag.toUpperCase()}
+            </Tag>
+          );
+        })}
+      </>
+    ),
+  },
+  {
+    title: 'precio',
+    dataIndex: 'precioservite',
+  },
+  {
+    title: 'opciones',
+    dataIndex: 'opciontele',
+  },
+];
+
+
+const onMenuClick = (e) => {
+  console.log('click', e);
+};
+const items = [
+  {
+    key: '1',
+    label: 'Editar',
+    children: [
+     
+      {
+        label: <ModalEstaudtel />,
+        key: "estatutd",
+
+
+
+      },
+      {
+        label: 'Datos',
+        key: "datos"
+      },
+    ]
+  },
+  {
+    key: '3',
+    label: 'Imprimir orden',
+
+  },
+  {
+    key: '2',
+    label: 'Eliminar',
+
+  },
+
+];
+
+
+
+const { TextArea } = Input;
+
+const data = [
+
+  {
+    key: '1',
+    ordenservicio: '01',
+    nombre: 'daniel ortega',
+    dni:'9634468',
+    modelo: 'Samsung a23',
+    numerocliente: '541151747883',
+    descriccion: "cambio de modulo",
+    estadotele: <Tag icon={<ClockCircleOutlined />} color="warning">Presupuestar</Tag>,
+    precioservite: '20.00',
+    tags: ['irreparable', 'entregado'],
+    opciontele: <Dropdown.Button
+      menu={{
+        items,
+        onClick: onMenuClick,
+      }}
+    >
+      opciones
+    </Dropdown.Button>
+
+  },
+  {
+    key: '2',
+    ordenservicio: '02',
+    dni:'9634468',
+    nombre: 'Jim Green',
+    
+    modelo: 'Xiaomi a20',
+    numerocliente: '541151747883',
+    descriccion: "cambio de modulo" ,
+    estadotele: <Tag icon={<CheckCircleOutlined />} color="success">Entregado</Tag>,
+    precioservite: '150.00',
+    tags: ['presupuestado'],
+    opciontele: <Dropdown.Button
+      menu={{
+        items,
+        onClick: onMenuClick,
+      }}
+    >
+      opciones
+    </Dropdown.Button>,
+
+
+  },
+  {
+    key: '3',
+    ordenservicio: '03',
+    dni:'9634468',
+
+    nombre: 'Joe Black',
+    modelo: 'samsung a20',
+    numerocliente: '541151747883',
+    descriccion: "cambio de pin de carga",
+    estadotele: <Tag icon={<CheckCircleOutlined />} color="success">Entregado</Tag>,
+    precioservite: '200.00',
+    tags: ['presupuestal',],
+    opciontele: <Dropdown.Button
+      menu={{
+        items,
+        onClick: onMenuClick,
+      }}
+    >
+      opciones
+    </Dropdown.Button>,
+
+
+  },
+  {
+    key: '4',
+    ordenservicio: '04',
+    dni:'96374468',
+
+    nombre: 'samuel luna',
+    modelo: 'moto e32',
+    numerocliente: '541151747883',
+    estadotele: <Tag icon={<SyncOutlined />} color="processing">Reparado</Tag>,
+    precioservite: '30.00',
+    tags: ['reparado', 'entregado'],
+     descriccion: "cambio de microfono",
+    opciontele: <Dropdown.Button
+      menu={{
+        items,
+        onClick: onMenuClick,
+      }}
+    >
+      opciones
+    </Dropdown.Button>,
+    
+
+
+  },
+];
+
+// rowSelection object indicates the need for row selection
+const rowSelection = {
+  onChange: (selectedRowKeys, selectedRows) => {
+    console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
+  },
+  getCheckboxProps: (record) => ({
+    disabled: record.name === 'Disabled User',
+    // Column configuration not to be checked
+    name: record.name,
+  }),
+};
+
+export const TablaTelefonos = () => {
+  return (
+    <div>
+
+
+
+      <Table
+
+        columns={columns}
+        expandable={{
+          expandedRowRender: (record) => (
+            <p
+              style={{
+                margin: 2,
+              }}
+            > <div><h2>Descriccion</h2></div>
+              {record.descriccion}
+             
+              <div><h2>Numero de telefono</h2></div>
+              {record.numerocliente}
+            </p>
+            
+          ),
+          
+          rowExpandable: (record) => record.name !== 'Not Expandable',
+        }}
+        dataSource={data}
+      />
+
+
+    </div>
+  )
+}
