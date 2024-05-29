@@ -1,7 +1,9 @@
-import { PlusCircleFilled,QuestionCircleOutlined,PlusOutlined } from '@ant-design/icons';
+import { PlusCircleFilled,QuestionCircleOutlined,PlusOutlined,WechatFilled ,UpCircleFilled} from '@ant-design/icons';
 
 import React, { useState } from 'react';
-import { Button, Col, DatePicker, Drawer, Form, Input, Row, Select, Space ,FloatButton} from 'antd';
+import { Button, Col, DatePicker, Drawer, Form, Input, Row, Select, Space ,FloatButton,Tooltip} from 'antd';
+import { FormAgreUser } from './Usuarios/FormAgreUsua';
+import { FormChats } from './Usuarios/chat/ForChats';
 
 const { Option } = Select;
 
@@ -12,7 +14,12 @@ const { Option } = Select;
 
 export const AgregarUsuario = () =>  {
   const [open, setOpen] = useState(false);
+  const [open2, setOpen2] = useState(false);
+
   const showDrawer = () => { setOpen(true); };
+  const showDrawer2 = () => { setOpen2(true); };
+
+  const onClose2 = () => { setOpen2(false);};
   const onClose = () => { setOpen(false);};
 
   return (
@@ -22,6 +29,24 @@ export const AgregarUsuario = () =>  {
   
       <FloatButton />
       <FloatButton icon={<PlusCircleFilled />} onClick={showDrawer} tooltip={<div>Agregar Usuario</div>} />
+      <FloatButton.Group
+      icon={<UpCircleFilled />}
+      trigger="click"
+      type="primary"
+      style={{
+        right: 24,
+      }}
+     
+    >    <Tooltip placement="leftBottom" title="Agragar usuario" color='blue'>
+
+      <FloatButton  icon={<PlusCircleFilled />} onClick={showDrawer} type="primary"
+        />
+                </Tooltip>
+                <Tooltip placement="leftBottom" title="Chats" color='blue'>
+      <FloatButton icon={<WechatFilled />} onClick={showDrawer2} type="primary" />
+      </Tooltip>
+
+    </FloatButton.Group>
 
     
       <Drawer
@@ -43,136 +68,18 @@ export const AgregarUsuario = () =>  {
           </Space>
         }
       >
-        <Form layout="vertical" hideRequiredMark>
-          <Row gutter={16}>
-            <Col span={12}>
-              <Form.Item
-                name="name"
-                label="Nombre y Apellido"
-                rules={[
-                  {
-                    required: true,
-                    message: 'Por favor ingrese Nombre y Apellido',
-                  },
-                ]}
-              >
-                <Input placeholder="Nombre y Apellido" />
-              </Form.Item>
-            </Col>
-            <Col span={12}>
-              <Form.Item
-                name="usuario"
-                label="Usuario"
-                rules={[
-                  {
-                    required: true,
-                    message: 'Por favor ingresar Usuario',
-                  },
-                ]}
-              >
-                <Input placeholder="Usuario" />
-              </Form.Item>
-            </Col>
-            <Col span={12}>
-              <Form.Item
-                name="clave"
-                label="Clave"
-                rules={[
-                  {
-                    required: true,
-                    message: 'Por favor ingresar la Clave',
-                  },
-                ]}
-              >
-                <Input placeholder="Clave" />
-              </Form.Item>
-            </Col>
-           
-            <Col span={12}>
-              <Form.Item
-                name="dni"
-                label="DNI"
-                rules={[
-                  {
-                    required: true,
-                    message: 'Por favor ingresar el DNI',
-                  },
-                ]}
-              >
-                <Input placeholder="DNI" />
-              </Form.Item>
-            </Col>
-            <Col span={12}>
-            <Form.Item
-                name="rol"
-                label="Rol del Usuario"
-                rules={[
-                  {
-                    required: true,
-                    message: 'Por favor Seleccione el Rol ',
-                  },
-                ]}
-              >
-                <Select placeholder="Seleccione el Rol">
-                  <Option value="admin">Admin</Option>
-                  <Option value="limitado">limitado</Option>
-                  <Option value="invitado">Invitado</Option>
-
-                </Select>
-              </Form.Item>
-            </Col>
-            <Col span={12}>
-              <Form.Item
-                name="cargo"
-                label="Cargo del Usuario"
-                rules={[
-                  {
-                    required: true,
-                    message: 'Cargo del Usuario',
-                  },
-                ]}
-              >
-                <Select placeholder="Seleccione el Cargo del Usuario">
-                  <Option value="tecnico">tecnico</Option>
-                  <Option value="venderdor">venderdor</Option>
-                  <Option value="Sisteama">Sistema</Option>
-               
-                 
-
-                </Select>
-              </Form.Item>
-            </Col>
-            <Col span={12}>
-            <Form.Item
-                name="numero"
-                label="Numero de telefono"
-                rules={[
-                  {
-                    required: true,
-                    message: 'Por favor ingresar numero de telefono ',
-                  },
-                ]}
-              >
-                <Input
-                  style={{
-                    width: '100%',
-                  }}
-                  addonBefore="+54"
-                 
-                  placeholder=" Ingresar numero de telefono"
-                />
-              </Form.Item>
-            </Col>
-          </Row>
-          
-          <Row gutter={16}>
-           
-
-          </Row>
-         
-        </Form>
+        <FormAgreUser></FormAgreUser>
       </Drawer>
-
+ 
+      <Drawer
+       
+        width={300}
+        onClose={onClose2}
+        open={open2}
+       
+      >
+       <FormChats></FormChats>
+      </Drawer>
       
 
   </>

@@ -7,8 +7,10 @@ import { TablaReport } from '../components/Report/TablaReport';
 import { PrinterOutlined } from '@ant-design/icons';
 import { EstadisticaRerpo } from '../components/Report/EstaditicaReport';
 import { Timeli } from '../components/home/time-line';
+import { HomeOutlined, UserOutlined ,FilePdfFilled} from '@ant-design/icons';
 
-import { Button ,Space, Row, Col} from "antd";
+
+import { Button ,Space, Row, Col, Breadcrumb} from "antd";
 
 
 
@@ -18,7 +20,24 @@ export const Reportes = () => {
     
     <LayoutPrincipal >
         
-    
+    <Breadcrumb
+    items={[
+      {
+        href: '/home',
+        title: <HomeOutlined />,
+      },
+      {
+        
+        title: (
+          <>
+            <FilePdfFilled />
+            <span>Reportes</span>
+          </>
+        ),
+      },
+      
+    ]}
+  />
 
     <br />
 

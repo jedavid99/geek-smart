@@ -29,7 +29,7 @@ export const Opciones = () => (
   >
     <a onClick={(e) => e.preventDefault()}>
       <Space>
-        Click me
+        Opciones
         <DownOutlined />
       </Space>
     </a>
