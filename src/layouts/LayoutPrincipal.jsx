@@ -99,9 +99,16 @@ export const LayoutPrincipal = ({children}) => {
                 key: "/proveedores"
               },
               {
-                label:<NavLink to='/Configuracion'>Configuracion</NavLink>,
+                label:'Configuracion',
                 icon: <SettingFilled />,
-                key: "/configuuracion"
+                children:[
+                  {
+                    label:<NavLink to='/empresa'>Empresa</NavLink>,
+                  },
+                  {
+                    label:<NavLink to='/usuarios'>Usuarios</NavLink>,
+                  }
+                ]
               },
               {
                 label: <NavLink to='/' >Cerrar seccion</NavLink>,

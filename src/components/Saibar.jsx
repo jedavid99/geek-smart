@@ -862,3 +862,72 @@ export const TablaTelefonos = () => {
     </div>
   )
 }
+
+
+import React, { useState } from 'react';
+import { PlusOutlined } from '@ant-design/icons';
+import Logo from '../../../assets/img/geeksmart.jpg';
+import { Image, Upload } from 'antd';
+const getBase64 = (file) =>
+  new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = (error) => reject(error);
+  });
+export const EditarLogo = () => {
+  const [previewOpen, setPreviewOpen] = useState(false);
+  const [previewImage, setPreviewImage] = useState('');
+  const [fileList, setFileList] = useState([
+    {
+      uid: '-1',
+      name: 'image.png',
+      status: 'done',
+      src:{Logo},
+    },
+   
+   
+  ]);
+  const handlePreview = async (file) => {
+    if (!file.url && !file.preview) {
+      file.preview = await getBase64(file.originFileObj);
+    }
+    setPreviewImage(file.url || file.preview);
+    setPreviewOpen(true);
+  };
+  const handleChange = ({ fileList: newFileList }) => setFileList(newFileList);
+  const uploadButton = (
+    <button
+
+
+      style={{
+        border: '4px',
+        background: 'none',
+        width:'34px,'
+      }}
+      type="button"
+    >
+      <PlusOutlined />
+      <div
+        style={{
+          marginTop: 8,
+        }}
+      >
+      
+      </div>
+    </button>
+  );
+  return (
+    <>
+      <Upload
+
+        listType="picture-card"
+        
+      
+      >
+        {fileList.length >= 8 ? null : uploadButton}
+      </Upload>
+     
+    </>
+  )
+}

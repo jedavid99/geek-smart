@@ -11,7 +11,8 @@ import { ListaTelefono } from './paginas/ListaTelefono';
 import { ListaPC } from './paginas/ListaPc';
 import { ListaOtros } from './paginas/ListaOtros';
 import { Reportes } from './paginas/Reporte';
-import { Configuracion } from './paginas/Configuracion';
+import { Empresa } from './paginas/Empresa';
+import { UsuariosConfig } from './paginas/Usuarios';
 
 
 function App() {
@@ -29,7 +30,9 @@ function App() {
           <Route exact path="/pc" element={<ListaPC/>}/>
           <Route exact path="/otros" element={<ListaOtros/>}/>
           <Route exact path="/reportes" element={<Reportes/>}/>
-          <Route exact path="/configuracion" element={<Configuracion/>}/>
+          <Route exact path="/empresa" element={<Empresa/>}/>
+          <Route exact path="/usuarios" element={<UsuariosConfig/>}/>
+
 
 
 
