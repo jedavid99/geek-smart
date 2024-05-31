@@ -1,110 +1,67 @@
 import React, { useRef, useState } from 'react';
 import { Space, Table, Tag, Form, Input, Select, Button, Dropdown, Tooltip } from 'antd';
-import { CheckCircleOutlined,  ClockCircleOutlined, SyncOutlined, PrinterOutlined ,SearchOutlined} from '@ant-design/icons';
+import { CheckCircleOutlined, CloseCircleOutlined, ClockCircleOutlined, SyncOutlined, DownOutlined ,SearchOutlined} from '@ant-design/icons';
 import Highlighter from 'react-highlight-words';
-const onMenuClick = (e) => {
-  console.log('click', e);
-};
-const items = [
-  
-  {
-    key: '3',
-    label: 'Editar',
+import { OpcionesServicio } from '../OpcionesServicio';
 
-  },
-  {
-    key: '2',
-    label: 'Eliminar',
-
-  },
-
-];
 const data = [
   
   {
     key: '1',
-    ordendeservicio: '01',
+    Codigo: '01',
     nombre: 'daniel ortega',
     dni:'9634468',
-    usuario: 'danel8y88',
-    estadotele: <Tag icon={<ClockCircleOutlined />} color="warning">Presupuestar</Tag>,
-    cargo: 'tecnico jefe',
-    rol:'usuario',
-    opciontele: <Dropdown.Button
-      menu={{
-        items,
-        onClick: onMenuClick,
-      }}
-    >
-      opciones
-    </Dropdown.Button>
+    modelo: 'Samsung a23',
+    numerocliente: '541151747883',
+    descriccion: "cambio de modulo",
+    precioservite: '20.00',
+    estatud: ['irreparable', 'entregado'],
+    opciontele: <OpcionesServicio/>
 
   },
   {
     key: '2',
-    ordendeservicio: '02',
+    Codigo: '02',
     dni:'9634468',
     nombre: 'Jim Green',
-    usuario: 'jinw3e',
-    estadotele: <Tag icon={<CheckCircleOutlined />} color="success">Entregado</Tag>,
-    cargo:'tecnico jefe',
-    rol:'admin',
-    opciontele: <Dropdown.Button
-      menu={{
-        items,
-        onClick: onMenuClick,
-      }}
-    >
-      opciones
-    </Dropdown.Button>,
+    modelo: 'Xiaomi a20',
+    numerocliente: '541151747883',
+    descriccion: "cambio de modulo" ,
+    precioservite: '150.00',
+    estatud: ['presupuestado'],
+    opciontele:<OpcionesServicio/>
 
 
   },
   {
     key: '3',
-    ordendeservicio: '03',
+    Codigo: '03',
     dni:'9634468',
     nombre: 'Joe Black',
-    usuario: 'joe878',
+    modelo: 'samsung a20',
+    numerocliente: '541151747883',
     descriccion: "cambio de pin de carga",
-    estadotele: <Tag icon={<CheckCircleOutlined />} color="success">Entregado</Tag>,
-    cargo :'tecnico jefe',
-    rol:'admin',
-    opciontele: <Dropdown.Button
-      menu={{
-        items,
-        onClick: onMenuClick,
-      }}
-    >
-      opciones
-    </Dropdown.Button>,
+    precioservite: '200.00',
+    estatud: ['presupuestal',],
+    opciontele:<OpcionesServicio/>
 
 
   },
   {
     key: '4',
-    ordendeservicio: '04',
+    Codigo: '04',
     dni:'96374468',
     nombre: 'samuel luna',
-    usuario: 'ssamu98',
-    estadotele: <Tag icon={<SyncOutlined />} color="processing">Reparado</Tag>,
-    cargo: 'tecnico jefe',
-    rol:'usuario',
+    modelo: 'moto e32',
+    numerocliente: '541151747883',
+    precioservite: '30.00',
+    estatud: ['reparado', 'entregado'],
      descriccion: "cambio de microfono",
-    opciontele: <Dropdown.Button
-      menu={{
-        items,
-        onClick: onMenuClick,
-      }}
-    >
-      opciones
-    </Dropdown.Button>,
-    
-
+    opciontele: <OpcionesServicio/>
 
   },
 ];
-export const TablaUsuarios= () => {
+export const TablaTelefonos = () => {
   const [searchText, setSearchText] = useState('');
   const [searchedColumn, setSearchedColumn] = useState('');
   const searchInput = useRef(null);
@@ -127,7 +84,7 @@ export const TablaUsuarios= () => {
       >
         <Input
           ref={searchInput}
-          placeholder={`Buscar por orden de servicio`}
+          placeholder={`Buscar por ${dataIndex}`}
           value={selectedKeys[0]}
           onChange={(e) => setSelectedKeys(e.target.value ? [e.target.value] : [])}
           onPressEnter={() => handleSearch(selectedKeys, confirm, dataIndex)}
@@ -206,51 +163,87 @@ export const TablaUsuarios= () => {
   
   const columns = [
     {
-      title: 'Nombre y Apellido',
+      title: 'Codigo',
+      dataIndex: 'Codigo',
+      ...getColumnSearchProps('Codigo'),
+
+    },
+    {
+      title: 'DNI',
+      dataIndex: 'dni',
+      ...getColumnSearchProps('DNI'),
+
+    },
+    {
+      title: 'Nombre del cliente',
       dataIndex: 'nombre',
-      ...getColumnSearchProps('ordendeservicio'),
+      render: (text) => <a>{text}</a>,
+    },
+  
+   
+    {
+      title: 'Modelo del telefono',
+      dataIndex: 'modelo',
+    },
+    
+  
+    
+  
+  
+    {
+      key: 'estatud',
+      title: 'estatud',
+      dataIndex: 'estatud',
+     
 
+      render: (_, { estatud }) => (
+        <>
+          {estatud.map((estatud) => {
+            let color = estatud.length > 10 ? 'geekblue' : 'green';
+            if (estatud === 'irreparable') {
+              color = 'volcano';
+            }
+            return (
+              <Tag color={color} key={estatud}>
+                {estatud.toUpperCase()}
+              </Tag>
+            );
+          })}
+        </>
+      ),
     },
     {
-        title: 'DNI',
-        dataIndex: 'dni',
-        ...getColumnSearchProps('dni'),
-  
-      },
-    {
-        title: 'Usuario',
-        dataIndex: 'usuario',
-      },
-    
-
-  
-  
-    {
-      title: 'Rol',
-      dataIndex: 'rol',
-      
+      title: 'precio',
+      dataIndex: 'precioservite',
     },
     {
-      title: 'Cargo',
-      dataIndex: 'cargo',
-    },
-    
-    
-    {
-      title: 'Opciones',
+      title: 'opciones',
       dataIndex: 'opciontele',
     },
   ];
   
-  
 
   
   
-  
-  return <div>
-  
-  <Table columns={columns}
- dataSource={data} />;
+  return <Table columns={columns}   
+  expandable={{
+    expandedRowRender: (record) => (
+      <p
+        style={{
+          margin: 2,
+        }}
+      > <div><h2>Descriccion</h2></div>
+        {record.descriccion}
+       
+        <div><h2>Numero de telefono</h2></div>
+        {record.numerocliente}
+      </p>
+      
+    ),
+    
+    rowExpandable: (record) => record.name !== 'Not Expandable',
+  }} dataSource={data} />;
 
-</div>
+
+
 }

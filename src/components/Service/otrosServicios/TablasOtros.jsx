@@ -1,135 +1,71 @@
 import React, { useRef, useState } from 'react';
 import { Space, Table, Tag, Form, Input, Select, Button, Dropdown, Tooltip } from 'antd';
-import { CheckCircleOutlined, CloseCircleOutlined, ClockCircleOutlined, SyncOutlined, DownOutlined ,SearchOutlined} from '@ant-design/icons';
+import { CheckCircleOutlined, CloseCircleOutlined, ClockCircleOutlined, SyncOutlined, DownOutlined, SearchOutlined } from '@ant-design/icons';
 import Highlighter from 'react-highlight-words';
-import { ModalEstaudtel } from '../modal/ModalEstatud';
-const onMenuClick = (e) => {
-  console.log('click', e);
-};
-const items = [
-  {
-    key: '1',
-    label: 'Editar',
-    children: [
-     
-      {
-        label: <ModalEstaudtel />,
-        key: "estatutd",
+import { OpcionesServicio } from '../OpcionesServicio';
 
 
-
-      },
-      {
-        label: 'Datos',
-        key: "datos"
-      },
-    ]
-  },
-  {
-    key: '3',
-    label: 'Imprimir orden',
-
-  },
-  {
-    key: '2',
-    label: 'Eliminar',
-
-  },
-
-];
 const data = [
-  
+
   {
     key: '1',
-    ordendeservicio: '01',
+    Codigo: '01',
     nombre: 'daniel ortega',
-    dni:'9634468',
+    DNI: '9634468',
     dispositivo: 'TV',
     numerocliente: '541151747883',
     descriccion: "cambio de modulo",
-    estadotele: <Tag icon={<ClockCircleOutlined />} color="warning">Presupuestar</Tag>,
-    precioservite: '20.00',
-    tags: ['irreparable', 'entregado'],
-    opciontele: <Dropdown.Button
-      menu={{
-        items,
-        onClick: onMenuClick,
-      }}
-    >
-      opciones
-    </Dropdown.Button>
+    precio: '20.00',
+    estado: ['irreparable', 'entregado'],
+    opciones: <OpcionesServicio />
 
   },
   {
     key: '2',
-    ordendeservicio: '02',
-    dni:'9634468',
+    Codigo: '02',
+    DNI: '9634468',
     nombre: 'Jim Green',
     dispositivo: 'micro ondas',
     numerocliente: '541151747883',
-    descriccion: "cambio de modulo" ,
-    estadotele: <Tag icon={<CheckCircleOutlined />} color="success">Entregado</Tag>,
-    precioservite: '150.00',
-    tags: ['presupuestado'],
-    opciontele: <Dropdown.Button
-      menu={{
-        items,
-        onClick: onMenuClick,
-      }}
-    >
-      opciones
-    </Dropdown.Button>,
+    descriccion: "cambio de modulo",
+    precio: '150.00',
+    estado: ['presupuestado'],
+    opciones: <OpcionesServicio />,
 
 
   },
   {
     key: '3',
-    ordendeservicio: '03',
-    dni:'9634468',
+    Codigo: '03',
+    DNI: '9634468',
 
     nombre: 'Joe Black',
     dispositivo: 'lavadora',
     numerocliente: '541151747883',
     descriccion: "cambio de pin de carga",
-    estadotele: <Tag icon={<CheckCircleOutlined />} color="success">Entregado</Tag>,
-    precioservite: '200.00',
-    tags: ['presupuestal',],
-    opciontele: <Dropdown.Button
-      menu={{
-        items,
-        onClick: onMenuClick,
-      }}
-    >
-      opciones
-    </Dropdown.Button>,
+    precio: '200.00',
+    estado: ['presupuestal',],
+    opciones: <OpcionesServicio />,
 
 
   },
   {
     key: '4',
-    ordendeservicio: '04',
-    dni:'96374468',
+    Codigo: '04',
+    DNI: '96374468',
     nombre: 'samuel luna',
     dispositivo: 'consola',
     numerocliente: '541151747883',
-    estadotele: <Tag icon={<SyncOutlined />} color="processing">Reparado</Tag>,
-    precioservite: '30.00',
-    tags: ['reparado', 'entregado'],
-     descriccion: "cambio de microfono",
-    opciontele: <Dropdown.Button
-      menu={{
-        items,
-        onClick: onMenuClick,
-      }}
-    >
-      opciones
-    </Dropdown.Button>,
-    
+    precio: '30.00',
+    estado: ['reparado', 'entregado'],
+    descriccion: "cambio de microfono",
+    opciones: <OpcionesServicio />,
+
 
 
   },
 ];
-export const TablaOtros= () => {
+export const TablaOtros = () => {
   const [searchText, setSearchText] = useState('');
   const [searchedColumn, setSearchedColumn] = useState('');
   const searchInput = useRef(null);
@@ -143,7 +79,7 @@ export const TablaOtros= () => {
     setSearchText('');
   };
   const getColumnSearchProps = (dataIndex) => ({
-    filterDropdown: ({ setSelectedKeys, selectedKeys, confirm, clearFilters,  }) => (
+    filterDropdown: ({ setSelectedKeys, selectedKeys, confirm, clearFilters, }) => (
       <div
         style={{
           padding: 8,
@@ -152,7 +88,7 @@ export const TablaOtros= () => {
       >
         <Input
           ref={searchInput}
-          placeholder={`Buscar por orden de servicio`}
+          placeholder={`Buscar por ${dataIndex}`}
           value={selectedKeys[0]}
           onChange={(e) => setSelectedKeys(e.target.value ? [e.target.value] : [])}
           onPressEnter={() => handleSearch(selectedKeys, confirm, dataIndex)}
@@ -195,7 +131,7 @@ export const TablaOtros= () => {
           >
             Restablecer
           </Button>
-         
+
         </Space>
       </div>
     ),
@@ -228,18 +164,18 @@ export const TablaOtros= () => {
         text
       ),
   });
-  
+
   const columns = [
     {
-      title: 'Orden de servicio',
-      dataIndex: 'ordendeservicio',
-      ...getColumnSearchProps('ordendeservicio'),
+      title: 'Codigo',
+      dataIndex: 'Codigo',
+      ...getColumnSearchProps('Codigo'),
 
     },
     {
       title: 'DNI',
-      dataIndex: 'dni',
-      ...getColumnSearchProps('dni'),
+      dataIndex: 'DNI',
+      ...getColumnSearchProps('DNI'),
 
     },
     {
@@ -247,32 +183,32 @@ export const TablaOtros= () => {
       dataIndex: 'nombre',
       render: (text) => <a>{text}</a>,
     },
-  
-   
+
+
     {
       title: 'Tipo de dispositivo ',
       dataIndex: 'dispositivo',
     },
-    
-  
-    
-  
-  
+
+
+
+
+
     {
       title: 'Estatud',
       dataIndex: 'estado',
-      key: 'tags',
-      dataIndex: 'tags',
-      render: (_, { tags }) => (
+      key: 'estado',
+      dataIndex: 'estado',
+      render: (_, { estado }) => (
         <>
-          {tags.map((tag) => {
-            let color = tag.length > 10 ? 'geekblue' : 'green';
-            if (tag === 'irreparable') {
+          {estado.map((estado) => {
+            let color = estado.length > 10 ? 'geekblue' : 'green';
+            if (estado === 'irreparable') {
               color = 'volcano';
             }
             return (
-              <Tag color={color} key={tag}>
-                {tag.toUpperCase()}
+              <Tag color={color} key={estado}>
+                {estado.toUpperCase()}
               </Tag>
             );
           })}
@@ -281,35 +217,29 @@ export const TablaOtros= () => {
     },
     {
       title: 'precio',
-      dataIndex: 'precioservite',
+      dataIndex: 'precio',
     },
     {
       title: 'opciones',
-      dataIndex: 'opciontele',
+      dataIndex: 'opciones',
     },
   ];
-  
-  
-
-  
-  
-  
   return <Table columns={columns}
-  expandable={{
-    expandedRowRender: (record) => (
-      <p
-        style={{
-          margin: 2,
-        }}
-      > <div><h2>Descriccion</h2></div>
-        {record.descriccion}
-       
-        <div><h2>Numero de telefono</h2></div>
-        {record.numerocliente}
-      </p>
-      
-    ),
-    
-    rowExpandable: (record) => record.name !== 'Not Expandable',
-  }} dataSource={data} />;
+    expandable={{
+      expandedRowRender: (record) => (
+        <p
+          style={{
+            margin: 2,
+          }}
+        > <div><h2>Descriccion</h2></div>
+          {record.descriccion}
+
+          <div><h2>Numero de telefono</h2></div>
+          {record.numerocliente}
+        </p>
+
+      ),
+
+      rowExpandable: (record) => record.name !== 'Not Expandable',
+    }} dataSource={data} />;
 }

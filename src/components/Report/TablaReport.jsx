@@ -1,113 +1,70 @@
 import React, { useRef, useState } from 'react';
 import { Space, Table, Tag, Form, Input, Select, Button, Dropdown, Tooltip } from 'antd';
-import { CheckCircleOutlined,  ClockCircleOutlined, SyncOutlined, PrinterOutlined ,SearchOutlined} from '@ant-design/icons';
+import { CheckCircleOutlined, ClockCircleOutlined, SyncOutlined, PrinterOutlined, SearchOutlined } from '@ant-design/icons';
 import Highlighter from 'react-highlight-words';
-const onMenuClick = (e) => {
-  console.log('click', e);
-};
-const items = [
-  
-  {
-    key: '3',
-    label: 'Imprimir orden',
+import { OpcionesReport } from './OpcionesReport';
 
-  },
-  {
-    key: '2',
-    label: 'Eliminar',
-
-  },
-
-];
 const data = [
-  
+
   {
     key: '1',
     ordendeservicio: '01',
     nombre: 'daniel ortega',
-    dni:'9634468',
+    dni: '9634468',
     numerocliente: '541151747883',
     descriccion: "cambio de modulo",
     estadotele: <Tag icon={<ClockCircleOutlined />} color="warning">Presupuestar</Tag>,
     precioservite: '20.00',
-    tags: ['irreparable', 'entregado'],
-    opciontele: <Dropdown.Button
-      menu={{
-        items,
-        onClick: onMenuClick,
-      }}
-    >
-      opciones
-    </Dropdown.Button>
+    estado: ['irreparable', 'entregado'],
+    opciontele: <OpcionesReport />
 
   },
   {
     key: '2',
     ordendeservicio: '02',
-    dni:'9634468',
+    dni: '9634468',
     nombre: 'Jim Green',
     numerocliente: '541151747883',
-    descriccion: "cambio de modulo" ,
+    descriccion: "cambio de modulo",
     estadotele: <Tag icon={<CheckCircleOutlined />} color="success">Entregado</Tag>,
     precioservite: '150.00',
-    tags: ['presupuestado'],
-    opciontele: <Dropdown.Button
-      menu={{
-        items,
-        onClick: onMenuClick,
-      }}
-    >
-      opciones
-    </Dropdown.Button>,
+    estado: ['presupuestado'],
+    opciontele: <OpcionesReport />
 
 
   },
   {
     key: '3',
     ordendeservicio: '03',
-    dni:'9634468',
+    dni: '9634468',
 
     nombre: 'Joe Black',
     numerocliente: '541151747883',
     descriccion: "cambio de pin de carga",
     estadotele: <Tag icon={<CheckCircleOutlined />} color="success">Entregado</Tag>,
     precioservite: '200.00',
-    tags: ['presupuestal',],
-    opciontele: <Dropdown.Button
-      menu={{
-        items,
-        onClick: onMenuClick,
-      }}
-    >
-      opciones
-    </Dropdown.Button>,
+    estado: ['presupuestal',],
+    opciontele: <OpcionesReport />
 
 
   },
   {
     key: '4',
     ordendeservicio: '04',
-    dni:'96374468',
+    dni: '96374468',
     nombre: 'samuel luna',
     numerocliente: '541151747883',
     estadotele: <Tag icon={<SyncOutlined />} color="processing">Reparado</Tag>,
     precioservite: '30.00',
-    tags: ['reparado', 'entregado'],
-     descriccion: "cambio de microfono",
-    opciontele: <Dropdown.Button
-      menu={{
-        items,
-        onClick: onMenuClick,
-      }}
-    >
-      opciones
-    </Dropdown.Button>,
-    
+    estado: ['reparado', 'entregado'],
+    descriccion: "cambio de microfono",
+    opciontele: <OpcionesReport />
+
 
 
   },
 ];
-export const TablaReport= () => {
+export const TablaReport = () => {
   const [searchText, setSearchText] = useState('');
   const [searchedColumn, setSearchedColumn] = useState('');
   const searchInput = useRef(null);
@@ -121,7 +78,7 @@ export const TablaReport= () => {
     setSearchText('');
   };
   const getColumnSearchProps = (dataIndex) => ({
-    filterDropdown: ({ setSelectedKeys, selectedKeys, confirm, clearFilters,  }) => (
+    filterDropdown: ({ setSelectedKeys, selectedKeys, confirm, clearFilters, }) => (
       <div
         style={{
           padding: 8,
@@ -173,7 +130,7 @@ export const TablaReport= () => {
           >
             Restablecer
           </Button>
-         
+
         </Space>
       </div>
     ),
@@ -206,7 +163,7 @@ export const TablaReport= () => {
         text
       ),
   });
-  
+
   const columns = [
     {
       title: 'Codigo',
@@ -220,32 +177,23 @@ export const TablaReport= () => {
       ...getColumnSearchProps('dni'),
 
     },
-  
-  
-   
-   
-    
-  
-    
-  
-  
     {
       title: 'Estatud',
       dataIndex: 'estado',
-      key: 'tags',
-      dataIndex: 'tags',
-      render: (_, { tags }) => (
+      key: 'estado',
+      dataIndex: 'estado',
+      render: (_, { estado }) => (
         <>
-          {tags.map((tag) => {
-            let color = tag.length > 10 ? 'geekblue' : 'green';
-            if (tag === 'irreparable') {
+          {estado.map((estado) => {
+            let color = estado.length > 10 ? 'geekblue' : 'green';
+            if (estado === 'irreparable') {
               color = 'volcano';
             }
             return (
-              <Tag color={color} key={tag}>
-                {tag.toUpperCase()}
+              <Tag color={color} key={estado}>
+                {estado.toUpperCase()}
               </Tag>
-            );
+            )
           })}
         </>
       ),
@@ -259,33 +207,32 @@ export const TablaReport= () => {
       dataIndex: 'opciontele',
     },
   ];
-  
-  
 
-  
-  
-  
+
+
+
+
+
   return <div>
-  
-  <Button type="primary"><PrinterOutlined />Imprimir Reporte</Button><br />
-  <Table columns={columns}
-  expandable={{
-    expandedRowRender: (record) => (
-      <p
-        style={{
-          margin: 2,
-        }}
-      > <div><h2>Descriccion</h2></div>
-        {record.descriccion}
-       
-        <div><h2>Numero de telefono</h2></div>
-        {record.numerocliente}
-      </p>
-      
-    ),
-    
-    rowExpandable: (record) => record.name !== 'Not Expandable',
-  }} dataSource={data} />;
 
-</div>
+    <Table columns={columns}
+      expandable={{
+        expandedRowRender: (record) => (
+          <p
+            style={{
+              margin: 2,
+            }}
+          > <div><h2>Descriccion</h2></div>
+            {record.descriccion}
+
+            <div><h2>Numero de telefono</h2></div>
+            {record.numerocliente}
+          </p>
+
+        ),
+
+        rowExpandable: (record) => record.name !== 'Not Expandable',
+      }} dataSource={data} />
+
+  </div>
 }

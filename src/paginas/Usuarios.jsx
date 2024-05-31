@@ -1,14 +1,12 @@
 import React from 'react'
 import { LayoutPrincipal } from '../layouts/LayoutPrincipal'
 import '../App.css';
-import { TablaUsuarios } from '../components/Config/UsuariosTabla';
-import { ListaUsuario } from '../components/Config/ListaUsuario';
-import { UsuariosLis } from '../components/Config/Usuarios/UsuariosLis';
-import { AgregarUsuario } from '../components/Config/AgregarUsuario';
+
 import { HomeOutlined, UserOutlined ,SettingFilled} from '@ant-design/icons';
 
 import { Breadcrumb } from 'antd';
-
+import { UsuariosLista } from '../components/Config/Usuarios/UsuariosLista';
+import { BotonUsuarios } from '../components/Config/Usuarios/BotonUsuario';
 
 
 export const UsuariosConfig = () => {
@@ -36,8 +34,9 @@ export const UsuariosConfig = () => {
       },
     ]}
   />
-    <UsuariosLis></UsuariosLis>
-    <AgregarUsuario></AgregarUsuario>
+  <br />
+  <UsuariosLista></UsuariosLista>
+  <BotonUsuarios></BotonUsuarios>
     </LayoutPrincipal>
     
     </div>

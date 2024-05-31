@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card , Flex ,Space} from 'antd';
-import { LogoEmpresa } from './Empresa/LogoEmpresa';
-import { EditarLogo } from './Empresa/EditarLogo';
+import { LogoEmpresa } from './LogoEmpresa';
+import { EditarLogo } from './EditarLogo';
 
 
 export const MapComponent = () => {

@@ -1,15 +1,15 @@
 import React from 'react'
 import { LayoutPrincipal } from '../layouts/LayoutPrincipal'
-import { TablaPC } from '../components/servicioPc/TablaPC';
+import { TablaPC } from '../components/Service/servicioPc/TablaPC';
 import '../App.css';
-import { NuevoClientePc } from '../components/servicioPc/NuevoClientePc';
-import { Breadcrumb } from 'antd';
+import { Breadcrumb, Card } from 'antd';
 import { HomeOutlined, UserOutlined ,ToolFilled} from '@ant-design/icons';
+import { BotonCliente } from '../components/Service/nuevocliente/BotonCliente';
 
 
 
 
-export const ListaPC = () => {
+export const PC = () => {
   return (
 
     <LayoutPrincipal >
@@ -32,11 +32,11 @@ export const ListaPC = () => {
         title: 'Pc',
       },
     ]}
-  />
+  /><br/>
+  <Card>
 <TablaPC></TablaPC>
-
-<NuevoClientePc></NuevoClientePc>
-
+</Card>
+<BotonCliente></BotonCliente>
 
     </LayoutPrincipal>
   )

@@ -3,7 +3,7 @@ import { NavLink, } from "react-router-dom"
 
 import Logo from '../assets/img/geeksmart.jpg'
 
-import { SettingFilled, ShopFilled, DashboardFilled, SmileFilled, UserOutlined, PoweroffOutlined, ToolFilled, FilePdfFilled } from '@ant-design/icons'
+import { SettingFilled, ShopFilled, DashboardFilled, SketchCircleFilled, WindowsFilled,ReconciliationFilled, IdcardFilled ,PoweroffOutlined, ToolFilled, FilePdfFilled,MobileFilled } from '@ant-design/icons'
 import { Breadcrumb, Layout, Menu, theme, Col, Row } from 'antd';
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -74,16 +74,19 @@ export const LayoutPrincipal = ({children}) => {
                 icon: <ToolFilled />,
                 children: [
                   {
-                    label: <NavLink to='/telefonos'>Servicio telefonos</NavLink>,
-                    key: "/servciotelefono"
+                    label: <NavLink to='/telefonos'>telefonos</NavLink>,
+                    key: "/servciotelefono",
+                    icon:<MobileFilled />,
                   },
                   {
-                    label:<NavLink to='/PC'>Servicio PC</NavLink>,
-                    key: "/servciopc"
+                    label:<NavLink to='/PC'>PC</NavLink>,
+                    key: "/servciopc",
+                    icon:<WindowsFilled />,
                   },
                   {
-                    label:<NavLink to='/Otros'>Otros Servicio</NavLink>,
-                    key: "/serviciotros"
+                    label:<NavLink to='/Otros'>Otros</NavLink>,
+                    key: "/serviciotros",
+                    icon:<SketchCircleFilled />,
                   },
                 ]
               },
@@ -104,9 +107,11 @@ export const LayoutPrincipal = ({children}) => {
                 children:[
                   {
                     label:<NavLink to='/empresa'>Empresa</NavLink>,
+                   icon:<ReconciliationFilled />,
                   },
                   {
                     label:<NavLink to='/usuarios'>Usuarios</NavLink>,
+                    icon:<IdcardFilled />,
                   }
                 ]
               },
@@ -130,7 +135,7 @@ export const LayoutPrincipal = ({children}) => {
         <Layout>
           <Header style={{ padding: 0, }} />
           <Content style={{ margin: '0 16px', }}>
-          <Breadcrumb style={{ margin: '16px 0', }} >
+          <Breadcrumb style={{ margin: '10px 0', }} >
 
 </Breadcrumb>
           {children}

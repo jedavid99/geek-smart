@@ -1,52 +1,60 @@
 import React from 'react'
 import { LayoutPrincipal } from '../layouts/LayoutPrincipal'
 import '../App.css';
-import { Charpclien } from '../components/home/charp-clien';
-import { Charp } from '../components/home/charp';
 import { TablaReport } from '../components/Report/TablaReport';
-import { PrinterOutlined } from '@ant-design/icons';
 import { EstadisticaRerpo } from '../components/Report/EstaditicaReport';
-import { Timeli } from '../components/home/time-line';
-import { HomeOutlined, UserOutlined ,FilePdfFilled} from '@ant-design/icons';
-
-
-import { Button ,Space, Row, Col, Breadcrumb} from "antd";
+import { Timeli } from '../components/home/TimeLine';
+import { HomeOutlined, FilePdfFilled } from '@ant-design/icons';
+import { Breadcrumb, Flex, Progress, Card, Space, Typography, Tooltip, Col, Row, Statistic } from "antd";
+import { ServicioC } from '../components/home/ServicioC';
+import { BotonImprimir } from '../components/Report/BotonImprimirReport';
 
 
 
 export const Reportes = () => {
   return (
-<div>
+    <div>
+
+      <LayoutPrincipal >
+
+        <Breadcrumb
+          items={[
+            {
+              href: '/home',
+              title: <HomeOutlined />,
+            },
+            {
+
+              title: (
+                <>
+                  <FilePdfFilled />
+                  <span>Reportes</span>
+                </>
+              ),
+            },
+
+          ]}
+        />
+
+        <br />
+
+        <Card>
+        <Flex style={{ marginTop: 12, marginLeft: 1 }} gap="middle" vertical>
+
+        <BotonImprimir></BotonImprimir>
+
+<Space size={20}>
+        <TablaReport></TablaReport>
+   
+    <EstadisticaRerpo></EstadisticaRerpo>
+</Space>
     
-    <LayoutPrincipal >
-        
-    <Breadcrumb
-    items={[
-      {
-        href: '/home',
-        title: <HomeOutlined />,
-      },
-      {
-        
-        title: (
-          <>
-            <FilePdfFilled />
-            <span>Reportes</span>
-          </>
-        ),
-      },
-      
-    ]}
-  />
+    </Flex>
+          <Timeli></Timeli>
 
-    <br />
-
-
-    
-   <EstadisticaRerpo></EstadisticaRerpo>
-   <Timeli></Timeli>
-
-    </LayoutPrincipal>
+          <ServicioC></ServicioC>
+        </Card>
+      </LayoutPrincipal>
     </div>
   )
 }

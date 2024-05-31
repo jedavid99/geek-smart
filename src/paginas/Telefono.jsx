@@ -1,14 +1,14 @@
 import React from 'react'
 import { LayoutPrincipal } from '../layouts/LayoutPrincipal'
-import { TablaTelefonos } from '../components/servicioTelefonos/TablasTelefono'
-import { NuevoClienteTele } from '../components/servicioTelefonos/NuevoClienteTele'
+import { TablaTelefonos } from '../components/Service/servicioTelefonos/TablasTelefono';
 import '../App.css';
-import { Breadcrumb } from 'antd';
+import { Breadcrumb, Card } from 'antd';
 import { HomeOutlined, UserOutlined ,ToolFilled} from '@ant-design/icons';
+import { BotonCliente } from '../components/Service/nuevocliente/BotonCliente';
 
 
 
-export const ListaTelefono = () => {
+export const Telefono = () => {
   return (
 
     <LayoutPrincipal >
@@ -33,11 +33,12 @@ export const ListaTelefono = () => {
         title: 'Telefonos',
       },
     ]}
-  />
+  /><br/>
+  <Card>
 <TablaTelefonos></TablaTelefonos>
- <NuevoClienteTele></NuevoClienteTele>
+</Card>
 
-
+<BotonCliente></BotonCliente>
     </LayoutPrincipal>
   )
 }

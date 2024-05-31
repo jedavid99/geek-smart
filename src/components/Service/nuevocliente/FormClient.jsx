@@ -1,8 +1,6 @@
 import { PlusCircleFilled,QuestionCircleOutlined,PlusOutlined } from '@ant-design/icons';
-
 import React, { useState } from 'react';
 import { Button, Col, DatePicker, Drawer, Form, Input, Row, Select, Space ,FloatButton} from 'antd';
-
 const { Option } = Select;
 
 
@@ -10,7 +8,7 @@ const { Option } = Select;
 
 
 
-export const NuevoClienteOtros = () =>  {
+export const FormCient = () =>  {
   const [open, setOpen] = useState(false);
   const showDrawer = () => { setOpen(true); };
   const onClose = () => { setOpen(false);};
@@ -20,30 +18,9 @@ export const NuevoClienteOtros = () =>  {
   < >
     
   
-      <FloatButton />
-      <FloatButton icon={<PlusCircleFilled />} onClick={showDrawer} tooltip={<div>Agregar cliente</div>} />
+  
 
-    
-      <Drawer
-        title="Agregar cliente"
-        width={720}
-        onClose={onClose}
-        open={open}
-        styles={{
-          body: {
-            paddingBottom: 80,
-          },
-        }}
-        extra={
-          <Space>
-            <Button onClick={onClose}>Cancelar</Button>
-            <Button onClick={onClose} type="primary">
-              Agregar
-            </Button>
-          </Space>
-        }
-      >
-        <Form layout="vertical" hideRequiredMark>
+    <Form layout="vertical" hideRequiredMark>
           <Row gutter={16}>
             <Col span={12}>
               <Form.Item
@@ -60,6 +37,24 @@ export const NuevoClienteOtros = () =>  {
               </Form.Item>
             </Col>
             <Col span={12}>
+            <Form.Item
+                name="Categoria"
+                label="Categoria:"
+                rules={[
+                  
+                ]}
+              >
+                 <Select placeholder="Seleccione la categoria">
+                  <Option value="Telefonos">Telefonos</Option>
+                  <Option value="Pc">Pc</Option>
+                  <Option value="varios">otros</Option>
+
+                </Select>
+              </Form.Item>
+            </Col>
+            <Col span={12}>
+
+
              <Form.Item
                 name="Tipodeservicio"
                 label="Tipo de servicio:"
@@ -73,16 +68,10 @@ export const NuevoClienteOtros = () =>  {
                 <Input placeholder="Tipo de servicio" />
               </Form.Item>
             </Col>
-          </Row>
-          <Row gutter={16}>
-            <Col span={12}>
-              
-            </Col>
-            <Col span={12}>
-              
-            </Col>
-          </Row>
-          <Row gutter={16}>
+          
+         
+        
+        
             <Col span={12}>
             <Form.Item
                 name="dispositivo"
@@ -119,6 +108,7 @@ export const NuevoClienteOtros = () =>  {
               </Form.Item>
             </Col>
 
+            
             <Col span={12}>
             <Form.Item
                 name="preciotelefono"
@@ -155,7 +145,6 @@ export const NuevoClienteOtros = () =>  {
             </Col>
           </Row>
         </Form>
-      </Drawer>
 
       
 

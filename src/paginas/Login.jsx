@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 import Logo from '../assets/img/geeksmart.jpg';
 import { Button, message, Space } from 'antd';
-import { Home } from '../paginas/Home';
+import { Home } from './Home';
 
 export const Login = () => {
 

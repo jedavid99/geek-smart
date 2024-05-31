@@ -5,11 +5,11 @@ import { Dropdown, Space } from 'antd';
 
 const items = [
   {
-    label: <a href="">Editar</a>,
+    label: 'Editar',
     key: '0',
   },
   {
-    label: <a href="">Elimnar</a>,
+    label: 'Eliminar',
     key: '1',
   },
   {
@@ -20,7 +20,7 @@ const items = [
     key: '3',
   },
 ];
-export const Opciones = () => (
+export const OpcionesUsuario = () => (
   <Dropdown
     menu={{
       items,

@@ -1,8 +1,7 @@
-
 import React, { useState } from 'react';
-import { Divider, Radio, Table } from 'antd';
-import { Flobott } from './provedor-agre';
-
+import { HomeOutlined, UserOutlined ,ShopFilled} from '@ant-design/icons';
+import { Breadcrumb, Card, Divider, Radio, Table } from 'antd';
+import { OpcionesPro } from './OpcionesProvedor';
 const columns = [
   {
     title: 'Provedores',
@@ -21,6 +20,10 @@ const columns = [
     title: 'dirrecion',
     dataIndex: 'dirrecion',
   },
+  {
+    title: 'opciones',
+    dataIndex: 'Opciones',
+  },
 ];
 const data = [
   {
@@ -28,7 +31,8 @@ const data = [
     provedores: 'John Brown',
     categoria: 'telefono',
     NumeroDtelefono: 1151747883,
-    dirrecion: 'capital 34 av'
+    dirrecion: 'capital 34 av',
+    Opciones: <OpcionesPro/>,
   },
   {
     key: '2',
@@ -36,6 +40,8 @@ const data = [
     categoria: 'pc',
     NumeroDtelefono: 1151747883,
     dirrecion:'capital 34 av',
+    Opciones: <OpcionesPro/>,
+
   },
   {
     key: '3',
@@ -43,6 +49,8 @@ const data = [
     categoria: 'pc',
     NumeroDtelefono: 1151747883,
     dirrecion:'capital 34 av',
+    Opciones: <OpcionesPro/>,
+
   },
   {
     key: '4',
@@ -50,6 +58,8 @@ const data = [
     categoria: 'varios',
     NumeroDtelefono: 1151747883,
     dirrecion:'capital 34 av',
+    Opciones: <OpcionesPro/>,
+
   },
   {
     key: '4',
@@ -57,61 +67,28 @@ const data = [
     categoria: 'telefono',
     NumeroDtelefono: 1151747883,
     dirrecion:'capital 34 av',
+    Opciones: <OpcionesPro/>,
+
   },
   
 ];
 
 // rowSelection object indicates the need for row selection
-const rowSelection = {
-  onChange: (selectedRowKeys, selectedRows) => {
-    console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
-  },
-  getCheckboxProps: (record) => ({
-    disabled: record.name === 'Disabled User',
-    // Column configuration not to be checked
-    name: record.name,
-  }),
-};
 
-
-
-export const Provelist = () => {
-  const [selectionType, setSelectionType] = useState('checkbox');
+export const TablaPoveedores = () => {
   return (
-    <div>
-      
 
-      <Table
-        rowSelection={{
-          type: selectionType,
-          ...rowSelection,
-        }}
+ <>
+ <Card>
+
+      <br />
+
+     <Table
+        
         columns={columns}
         dataSource={data}
       />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    </div>
+      </Card>
+</>
   )
 }

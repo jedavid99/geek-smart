@@ -1,7 +1,7 @@
 import React from 'react';
 import { Descriptions ,Card} from 'antd';
 import { MapComponent } from './Maps';
-import { EditarLogo } from './Empresa/EditarLogo';
+import { EditarLogo } from './EditarLogo';
 const items = [
     {
         key: '1',

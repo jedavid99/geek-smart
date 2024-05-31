@@ -1,15 +1,7 @@
-import { PlusCircleFilled,QuestionCircleOutlined,PlusOutlined } from '@ant-design/icons';
 
 import React, { useState } from 'react';
 import { Button, Col, DatePicker, Drawer, Form, Input, Row, Select, Space ,FloatButton,Tooltip} from 'antd';
-
 const { Option } = Select;
-
-
-
-
-
-
 export const FormAgreUser = () =>  {
   
 
@@ -17,11 +9,6 @@ export const FormAgreUser = () =>  {
 
   < >
     
-  
-
-
-    
-      
         <Form layout="vertical" hideRequiredMark>
           <Row gutter={16}>
             <Col span={12}>
